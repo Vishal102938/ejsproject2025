@@ -1,0 +1,36 @@
+<%- include('./base/header.ejs') %>
+
+<div class="d-flex vh-100 align-items-center justify-content-center" style="background-color: rgb(219, 248, 145);">
+  <div class="col-sm-10 col-md-8 col-lg-5">
+    <form action="/login" method="post" class="card p-4 shadow rounded" style="background-color: rgb(249, 160, 236);">
+      <h3 class="text-center mb-4">Login Form</h3>
+      <div class="form-floating mb-3">
+        <input type="email" name="email" class="form-control" id="emailInput" placeholder="you@example.com" required>
+        <label for="emailInput">Email</label>
+      </div>
+      <div class="form-floating mb-3 position-relative">
+        <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Password" required>
+        <label for="passwordInput">Password</label>
+        <button type="button" class="btn btn-sm btn-outline-secondary position-absolute top-50 end-0 translate-middle-y me-2" onclick="togglePassword('passwordInput')">Show</button>
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="rememberMe" name="remember">
+        <label class="form-check-label" for="rememberMe">Remember Me</label>
+      </div>
+      <input type="submit" value="Login" class="btn btn-primary w-100 mb-3"></input>
+      <div class="text-center mb-3">or</div>
+      <!-- <button type="button" class="btn btn-outline-danger w-100 mb-2">Continue with Google</button>
+      <button type="button" class="btn btn-outline-primary w-100 mb-3">Continue with Facebook</button> -->
+      <p class="text-center mb-0">Don’t have an account? <a href="/user/signup" class="btn btn-info w-30 my-3">Sign Up</a></p>
+    </form>
+  </div>
+</div>
+
+<script>
+  function togglePassword(id) {
+    const input = document.getElementById(id);
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
+</script>
+
+<%- include('./base/footer.ejs') %>

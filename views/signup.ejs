@@ -1,0 +1,38 @@
+<%- include('./base/header.ejs') %> 
+
+<section class="vh-100">
+  <div class="container h-100">
+    <div class="row h-100">
+      
+      <div class="col-md-6 d-flex align-items-center justify-content-center">
+        <form action="/signup" method="POST" class="w-75">
+          <h2 class="mb-4">Student Signup</h2>
+          <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input name="firstName" type="text" id="firstName" required class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input name="lastName" type="text" id="lastName" required class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input name="email" type="email" id="email" required class="form-control" />
+          </div>
+          <div class="mb-4">
+            <label for="password" class="form-label">Password</label>
+            <input name="password" type="password" id="password" required class="form-control" />
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+        </form>
+      </div>
+      
+      <div class="col-md-6 d-flex align-items-center justify-content-center bg-light">
+        <img src="/images/college-logo.png" alt="College Logo" class="img-fluid" style="max-height: 250px;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('./base/footer.ejs') %>
+

@@ -1,0 +1,85 @@
+<%- include('./base/header.ejs') %>
+<%- include('./base/nav.ejs') %>
+
+<div class="container">
+    <div class="alert text-center bg-primary my-3" style="color:white">
+        <h4>Edit Student</h4>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form action="/edit/student/<%= student._id %>" method="post">
+                <div class="mb-3">
+                    <label for="rollNo" class="form-label">Roll No</label>
+                    <input type="text" class="form-control" name="rollNo" value="<%= student.rollNo %>" id="rollNo">
+                </div>
+                <div class="mb-3">
+                    <label for="studentName" class="form-label">Student Name</label>
+                    <input type="text" class="form-control" name="studentName" value="<%= student.studentName %>" id="name">
+                </div>
+                <div class="mb-3">
+                    <label for="fatherName" class="form-label">Father Name</label>
+                    <input type="text" class="form-control" name="fatherName" value="<%= student.fatherName %>" id="fatherName">
+                </div>
+                <div class="mb-3">
+                    <label for="course" class="form-label">Course</label>
+                    <select class="form-control" name="course" value="<%= student.course %>" id="course" onchange="updateBranches()">
+                        <option value="">-- Select Course --</option>
+                        <option value="B.Tech">B.Tech</option>
+                        <option value="B.Sc">B.Sc</option>
+                        <option value="B.Com">B.Com</option>
+                        <option value="BA">BA</option>
+                        <option value="BCA">BCA</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="branch" class="form-label">Branch</label>
+                    <select class="form-control" name="branch" value="<%= student.branch %>" id="branch">
+                        <option value="">-- Select Branch --</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="yearOfAdmission" class="form-label">Year of Admission</label>
+                    <select class="form-control" name="yearOfAdmission" value="<%= student.yearOfAdmission %>" id="yearOfAdmission">
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                    </select>
+                </div>
+                <input type="submit" value="Add Student" class="btn btn-warning w-100 my-3">
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const branchOptions = {
+        "B.Tech": ["Computer Science", "Mechanical", "Electrical", "Civil", "Electronics"],
+        "B.Sc": ["Physics", "Chemistry", "Mathematics", "Biology"],
+        "B.Com": ["Accounting", "Finance", "Taxation"],
+        "BA": ["History", "Political Science", "Psychology", "Economics"],
+        "BCA": ["Software Development", "Networking", "Cyber Security"]
+    };
+
+    function updateBranches() {
+        const courseSelect = document.getElementById("course");
+        const branchSelect = document.getElementById("branch");
+        const selectedCourse = courseSelect.value;
+
+        branchSelect.innerHTML = '<option value="">-- Select Branch --</option>';
+
+        if (branchOptions[selectedCourse]) {
+            branchOptions[selectedCourse].forEach(branch => {
+                const option = document.createElement("option");
+                option.value = branch;
+                option.textContent = branch;
+                branchSelect.appendChild(option);
+            });
+        }
+    }
+</script>
+
+<%- include('./base/footer.ejs') %>
+    
