@@ -5,14 +5,15 @@ const Schema = mongoose.Schema;
 
 const studentSchema = new Schema ({
     rollNo: {type: String, required: true },
-    studentName:  {type: String, required: true },
-    fatherName: {type: String, required: true},
-    course: {type: String, required: true },
-    branch: {type: String, required: true},
-    yearOfAdmission: {type:String,required:true},
-    studentImage: {type:String},
-    createdAt: Date, 
-    updatedAt: Date
+    studentName : {type: String, required: true },
+    fatherName : {type: String, required: true},
+    motherName : {type: String},
+    course : {type: String, required: true },
+    branch : {type: String, required: true},
+    yearOfAdmission : {type:String,required:true},
+    studentImage : {type:String},
+    createdAt : Date, 
+    updatedAt : Date
 });
 studentSchema.plugin(timestamps, {index: true});
 module.exports = mongoose.model('Student', studentSchema);
